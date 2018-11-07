@@ -16,4 +16,5 @@ public class AppointmentViewServiceImpl implements AppointmentViewService {
     @Autowired
     private AppointmentViewRepository appointmentViewRepository;
 
+
 }
