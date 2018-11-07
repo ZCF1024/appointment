@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"> 
+	<title>发起预约</title>
+	<script src="http://202.196.47.3:8090/target/target-script-min.js#anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+	<div class="weui-cells__title weui-label">基本信息</div>
+	<div class="weui-cells weui-cells_form">		
+	    <div class="weui-cell">
+	        <div class="weui-cell__hd"><label class="weui-label">主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题</label></div>
+	        <div class="weui-cell__bd">
+	            <input id="topic" class="weui-input" type="text" placeholder="请输入主题"/>
+	        </div>
+	    </div>
+
+	    <div class="weui-cell">
+	        <div class="weui-cell__hd"><label class="weui-label">人数限制</label></div>
+	        <div class="weui-cell__bd">
+	            <input id="peo-limit" class="weui-input" type="number" placeholder="10" readonly/>
+	        </div>
+	    </div>
+
+	    <div class="weui-cell">
+	        <div class="weui-cell__hd"><label class="weui-label">截止日期</label></div>
+	        <div class="weui-cell__bd">
+	            <input type="text" id='deadline' class="weui-input" style="border: 0px;" readonly/>
+	        </div>
+	    </div>
+
+	    <div class="weui-cell weui-cell_switch">
+	        <div class="weui-cell__bd">设置密码</div>
+	        <div class="weui-cell__ft">
+	            <input id="needed-password" class="weui-switch" type="checkbox" />
+	        </div>
+    	</div>
+
+    	<div id="password-container" class="weui-cell">
+	        <div class="weui-cell__hd"><label class="weui-label">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label></div>
+	        <div class="weui-cell__bd">
+	            <input id="password" class="weui-input" type="password" placeholder="请输密码"/>
+	        </div>
+	    </div>
+	</div>
+
+	<div class="weui-cells__title weui-label">活动描述</div>
+	<div class="weui-cells weui-cells_form">
+	    <div class="weui-cell">
+	        <div class="weui-cell__bd">
+	            <textarea id="desc" class="weui-textarea" placeholder="赶快加入吧！" rows="3"></textarea>
+	            <div class="weui-textarea-counter"><span>0</span>/200</div>
+	        </div>
+	    </div>
+	</div>
+	<a id="submit" href="javascript:;" class="weui-btn weui-btn_primary" style="margin-top: 10px">快速发起</a>	
+</body>
+<script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function (){
+		init();
+	});	
+
+	$("#needed-password").click(function() {
+		var self = $(this);
+		if(self.prop("checked")){
+			$("#password-container").show();
+		} else{
+			$("#password-container").hide();
+		}
+	});
+
+    $("#submit").click(function() {
+    	var topic = $("#topic").val();
+    	var desc = $("#desc").val();
+    	var peoLimit = $("#peo-limit").val();
+    	var deadline = $("#deadline").val();
+    	var password = $("#password").val();
+    	if($("#password-container").is(":visible") && password == ""){
+    		console.log("密码不能为空");
+    	}
+    	console.log("topic: " + topic + " desc: " + desc + " peo: " + peoLimit + " deadline: " + deadline + " password: " + password);
+    	weui.toast('发起成功', 3000);
+    });
+
+    $("#desc").bind("input propertychange", function(){
+    	var length = $(this).val().length;
+    	if(length > 200){
+    		length--;
+    		$(this).val($(this).val().slice(0, length));
+    		return;
+    	}
+    	var sp = $(".weui-textarea-counter").children("span");
+        sp.text(length);
+        
+    })
+
+    function init(){
+    	var deadline = $("#deadline");
+    	var start = {
+    		'min': getDate(),
+    		'hours': ['11','12','13','14','15','16'],
+    		'minutes': ['00', '15', '30', '45']
+    	};
+    	deadline.datetimePicker(start);
+	    deadline.val(getTime());
+		
+		$("#peo-limit").picker({
+		  title: "可参与人数",
+		  cols: [
+		    {
+		      textAlign: 'center',
+		      values: getNumToNumAray(1, 100)
+		    }
+		  ]
+		});
+
+	    $("#password-container").hide();
+    }
+
+    function getTime(){
+    	var now = new Date();
+        // now.getDay(); //获取星期X(0-6,0代表星期天)
+		// now.getSeconds(); //获取秒数(0-59)
+		var nowStr = now.getFullYear() + "-"; // 获取年份(4位)
+		nowStr += addZero(now.getMonth() + 1) + "-"; // 获取月份(0-11)
+		nowStr += addZero(now.getDate()) + " "; // 获取日(1-31)
+		nowStr += addZero(now.getHours()) + ":"; // 获取小时数(0-23)
+		nowStr += addZero(now.getMinutes()); // 获取分钟数(0-59)
+		console.log(nowStr);
+		return nowStr;
+    }
+
+    function getDate(){
+    	var now = new Date();
+		var nowStr = now.getFullYear() + "-"; // 获取年份(4位)
+		nowStr += addZero(now.getMonth()  + 1) + "-"; // 获取月份(0-11)
+		nowStr += addZero(now.getDate()); // 获取日(1-31)
+		console.log(nowStr);
+		return nowStr;
+    }
+
+    function addZero(param){    	
+    	if(param / 10 < 1){
+    		return "0" + param;
+    	}
+    	return "" + param;
+    }
+
+    function getNumToNumAray(start, end){
+    	var aray = [];
+    	for(var i = start; i <= end; i++){
+    		aray.push(i);
+    	}
+        return aray;
+    }
+
+
+</script>
+</html>

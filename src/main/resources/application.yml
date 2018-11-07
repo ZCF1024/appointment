@@ -14,17 +14,16 @@ spring:
       ddl-auto: none
 
 
-#  thymeleaf:
-#    cache: true
-#    check-template-location: true
-#    prefix: classpath:/templates/
-#    suffix: .html
-#    content-type: text/html
-#    enabled: true
-#    encoding: utf-8
-#    mode: HTML5
-#    excluded-view-names:
-#    template-resolver-order:
+  thymeleaf:
+    cache: true
+    check-templates-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
+    encoding: utf-8
+    mode: HTML5
+    excluded-view-names:
+    templates-resolver-order:
 
 server:
   port: 8080

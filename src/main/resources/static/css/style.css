@@ -1,0 +1,91 @@
+h2{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.trp-info > div {
+	margin-top: 2%;
+}
+
+.show-time{
+	width: 90%;
+	margin-left: 5%;
+	border-bottom: 1px solid #C6C6C6;
+}
+
+.create-user-img{
+	margin: auto;
+	margin-top: 2%;
+	width: 3em;
+	height: 3em;
+	border-radius: 1.5em
+}
+
+.create-user-img img{
+	width: 3em;
+	height: 3em;
+}
+
+.join-user-img{
+	margin: auto;
+	margin-top: 2%;
+	width: 2em;
+	height: 2em;
+	border-radius: 1em
+}
+
+.join-user-img img{
+	width: 2em;
+	height: 2em;
+}
+
+.weui-bar__item--on {
+	border-bottom: 2px solid green;
+
+}
+
+.weui-tab{
+	height: 100%;
+}
+
+.trp-info-right {
+	margin-left: 1.5%;
+}
+
+.trp-info-left {
+	margin-right: 1.5%;
+}
+
+.trp-info:hover{
+	box-shadow: #C6C6C6 0px 0px 10px 0.5px inset;
+}
+
+.trp-info{
+	height: 220px;
+	padding: 2%;
+	margin-bottom: 2.5%;
+    text-align: center;
+    border-radius: 0.25em;
+    border: 0.5px solid #E3E3E3;
+    box-shadow: #E3E3E3 0px 0px 10px 0.5px;
+}
+
+.weui-btn {
+	margin-top: 1px;
+	margin-left: 5%;
+	margin-right: 5%; 
+}
+.hall{
+	margin: 2%;
+}
+
+#home-content {
+	margin-left: 20%;
+	align-items: center;
+	margin-top: 60%;
+	width: 60%;
+}
+
+#home-content .weui-btn{
+	margin-top: 15%;
+}

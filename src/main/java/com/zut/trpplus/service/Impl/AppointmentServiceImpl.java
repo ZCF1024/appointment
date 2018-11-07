@@ -5,6 +5,9 @@ import com.zut.trpplus.dao.repository.AppointmentRepository;
 import com.zut.trpplus.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 /**
  * @Author zcf
  * @Create 2018/11/1 19:50
@@ -23,4 +26,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
         return 0;
     }
+
+    @Override
+    public List<Appointment> findAll() {
+        return this.appointmentRepository.findAll();
+    }
+
 }

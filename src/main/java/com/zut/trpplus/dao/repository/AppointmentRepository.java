@@ -3,6 +3,8 @@ package com.zut.trpplus.dao.repository;
 import com.zut.trpplus.dao.domain.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
     /**
      * 通过发起人id查找活动
@@ -17,4 +19,5 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
      * @return 返回一个Appointment对象
      */
     Appointment findByCreateTime(String time);//（测试失败）
+
 }

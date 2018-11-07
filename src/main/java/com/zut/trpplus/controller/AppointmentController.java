@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("app")
@@ -19,11 +22,17 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
     @GetMapping("create")
-    private Result create(@RequestBody Appointment appointment){
+    public Result create(@RequestBody Appointment appointment){
         if(this.appointmentService.create(appointment) == 1){
             return ResultUtil.success();
         }
         return ResultUtil.error(ResultEnum.UNKONW_ERROR.getCode(), "系统异常");
+    }
+
+    @ResponseBody
+    @GetMapping("test")
+    public List<Appointment> test(){
+        return this.appointmentService.findAll();
     }
 
 }
