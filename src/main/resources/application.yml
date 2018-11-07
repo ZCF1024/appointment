@@ -4,9 +4,9 @@ spring:
     url: jdbc:mysql://119.23.50.239:3306/appointment?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&useSSL=false
     username: zzti_zut
     password: zzti123456
-    tomcat:
-      remove-abandoned: true
-      remove-abandoned-timeout: 20
+#    tomcat:
+#      remove-abandoned: true
+#      remove-abandoned-timeout: 20
 
   jpa:
     show-sql: true
@@ -14,19 +14,19 @@ spring:
       ddl-auto: none
 
 
-  thymeleaf:
-    cache: true
-    check-template-location: true
-    prefix: classpath:/templates/
-    suffix: .html
-    content-type: text/html
-    enabled: true
-    encoding: utf-8
-    mode: HTML5
-    excluded-view-names:
-    template-resolver-order:
+#  thymeleaf:
+#    cache: true
+#    check-template-location: true
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    content-type: text/html
+#    enabled: true
+#    encoding: utf-8
+#    mode: HTML5
+#    excluded-view-names:
+#    template-resolver-order:
 
 server:
   port: 8080
 
-debug: true
+#debug: true

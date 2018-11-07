@@ -14,15 +14,24 @@ public class Appointment {
 
     private String userId;        // 发起人ID
 
-    private Integer appState;      // 活动状态
+    /** 活动状态
+     * 1-报名中， 2-待开始, 3-进行中, 4-已结束, 5-已停止
+     */
+    private Integer appState;
 
     private Integer peoLimit;      // 人数上限
+
+    private Integer winners;       // 中奖人数
 
     private String topic;          // 活动主题
 
     private String des;            // 活动描述
 
     private String createTime;     // 发起时间
+
+    private String deadLine; // 报名截止时间
+
+    private String openTime; // 开奖时间
 
     private String updateTime;     // 修改时间
 
@@ -44,7 +53,7 @@ public class Appointment {
         return userId;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -62,6 +71,14 @@ public class Appointment {
 
     public void setPeoLimit(Integer peoLimit) {
         this.peoLimit = peoLimit;
+    }
+
+    public Integer getWinners() {
+        return winners;
+    }
+
+    public void setWinners(Integer winners) {
+        this.winners = winners;
     }
 
     public String getTopic() {
@@ -86,6 +103,14 @@ public class Appointment {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getOpenTime() {
+        return openTime;
+    }
+
+    public void setOpenTime(String openTime) {
+        this.openTime = openTime;
     }
 
     public String getUpdateTime() {
@@ -120,6 +145,14 @@ public class Appointment {
         this.shareable = shareable;
     }
 
+    public String getDeadLine() {
+        return deadLine;
+    }
+
+    public void setDeadLine(String deadLine) {
+        this.deadLine = deadLine;
+    }
+
     @Override
     public String toString() {
         return "Appointment{" +
@@ -131,6 +164,7 @@ public class Appointment {
                 ", des='" + des + '\'' +
                 ", createTime='" + createTime + '\'' +
                 ", updateTime='" + updateTime + '\'' +
+                ", eadLine=" + deadLine + '\'' +
                 ", password='" + password + '\'' +
                 ", neededPassword=" + neededPassword +
                 ", shareable=" + shareable +

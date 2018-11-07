@@ -1,11 +1,14 @@
-package com.zut.trpplus.dao.repository;
+package com.zut.trpplus.dao;
 
 import com.zut.trpplus.dao.domain.User;
+import com.zut.trpplus.dao.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -27,18 +30,12 @@ public class UserRepositoryTest {
      */
     @Test
     public void findByClazz() {
-        User user = userRepository.findByClazz("161");
-        System.out.println(user.toString());
-    }
 
-    /**
-     * 测试findByUserId方法
-     * 根据userID查出一个用户User然后调用toString方法
-     */
-    @Test
-    public void findByUserId() {
-        User user = userRepository.findByUserId("abcdef");
-        System.out.println(user.toString());
+        List<User> users = userRepository.findByClazz("软件162");
+        for(User user : users){
+            System.out.println("id: " + user.getUserId() + " name: " + user.getName());
+        }
+
     }
 
 }

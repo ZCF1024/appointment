@@ -3,6 +3,8 @@ package com.zut.trpplus.dao.repository;
 import com.zut.trpplus.dao.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 
 public interface UserRepository extends JpaRepository<User, String> {
 
@@ -11,7 +13,7 @@ public interface UserRepository extends JpaRepository<User, String> {
      * @param clazz 班级
      * @return  返回一个User对象
      */
-    User findByClazz(String clazz);
+    List<User> findByClazz(String clazz);
 
     /**
      * 通过userId查询用户
@@ -19,6 +21,8 @@ public interface UserRepository extends JpaRepository<User, String> {
      * @return 返回一个User对象
      */
     User findByUserId(String userId);
+
+    List<User> findByClazzLike(String clazz);
 
 
 }
