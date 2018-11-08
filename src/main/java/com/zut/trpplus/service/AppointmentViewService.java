@@ -1,5 +1,6 @@
 package com.zut.trpplus.service;
 
+import com.zut.trpplus.dao.domain.Appointment;
 import com.zut.trpplus.dao.domain.AppointmentView;
 
 import java.util.List;
@@ -13,6 +14,6 @@ public interface AppointmentViewService {
 
     List<AppointmentView> findAllByAppState(Integer state);
 
-    AppointmentView findByUserId(String userId);
+    AppointmentView findBySponsorId(String sponsorId);
 
 }

@@ -1,5 +1,7 @@
 package com.zut.trpplus.dao.domain;
 
+import com.zut.trpplus.utils.DateUtil;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -8,15 +10,15 @@ import javax.persistence.Id;
  * @Create 2018/11/1 18:20
  * @Desc 用于显示活动信息的实体
  */
-@Entity(name = "appointment_view")
+@Entity(name = "v_appointment")
 public class AppointmentView {
 
     @Id
     private Long appId; // 活动ID
 
-    private String userId; // 发起人ID
+    private String sponsorId; // 发起人ID
 
-    private String userName; // 发起人姓名
+    private String sponsorn; // 发起人姓名
 
     private Integer appState; // 预约状态
 
@@ -36,20 +38,20 @@ public class AppointmentView {
         this.appId = appId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getSponsorId() {
+        return sponsorId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setSponsorId(String sponsorId) {
+        this.sponsorId = sponsorId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getSponsorn() {
+        return sponsorn;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setSponsorn(String sponsorn) {
+        this.sponsorn = sponsorn;
     }
 
     public Integer getAppState() {

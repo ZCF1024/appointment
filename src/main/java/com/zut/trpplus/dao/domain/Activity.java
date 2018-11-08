@@ -1,5 +1,7 @@
 package com.zut.trpplus.dao.domain;
 
+import com.zut.trpplus.utils.DateUtil;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -14,13 +16,18 @@ public class Activity {
     @Id
     private String userId;  // 用户 Id
 
-    private Integer appId; // 活动 Id
+    private Long appId; // 活动 Id
 
     private String createTime; // 加入时间
 
     private String updateTime; // 更新时间
 
     private Boolean deleted; // 删除标志
+
+    public Activity() {
+        this.createTime = DateUtil.getTimeStamp();
+        this.deleted = false;
+    }
 
     public String getUserId() {
         return userId;
@@ -30,11 +37,11 @@ public class Activity {
         this.userId = userId;
     }
 
-    public Integer getAppId() {
+    public Long getAppId() {
         return appId;
     }
 
-    public void setAppId(Integer appId) {
+    public void setAppId(Long appId) {
         this.appId = appId;
     }
 

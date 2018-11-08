@@ -19,18 +19,14 @@ public class AppointmentViewServiceImpl implements AppointmentViewService {
     @Autowired
     private AppointmentViewRepository appointmentViewRepository;
 
-
     @Override
     public List<AppointmentView> findAllByAppState(Integer state) {
         return this.appointmentViewRepository.findAllByAppState(state);
     }
 
     @Override
-    public AppointmentView findByUserId(String userId) {
-        List<AppointmentView> appointmentViews = this.appointmentViewRepository.findByUserId(userId);
-        if(appointmentViews == null){
-            return null;
-        }
-        return appointmentViews.get(0);
+    public AppointmentView findBySponsorId(String sponsorId) {
+        List<AppointmentView> appointmentViews = this.appointmentViewRepository.findBySponsorId(sponsorId);
+        return appointmentViews == null ? null : appointmentViews.get(0);
     }
 }

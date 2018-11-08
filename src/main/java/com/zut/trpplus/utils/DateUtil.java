@@ -1,5 +1,6 @@
 package com.zut.trpplus.utils;
 
+import javax.rmi.CORBA.Util;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,7 +37,6 @@ public class DateUtil {
     }
 
     /**
-     *
      * @param date 时间
      * @param type 时间类型 如：yyyy-mm-dd HH:mm:ss
      * @return 格式化后的时间
@@ -142,7 +142,6 @@ public class DateUtil {
 
     public static void main(String[] args) {
         System.out.println(addHour("2018-03-25 12:00:00", 7));
-
     }
 
 }

@@ -39,7 +39,7 @@ public class AppointmentRepositoryTest {
             for(int j = 0; j < 4; j++){
                 if(user.getName().equals(names[j])){
                     Appointment appointment = new Appointment();
-                    appointment.setUserId(user.getUserId());
+                    appointment.setSponsorId(user.getUserId());
                     appointment.setAppState(j % 2 + 1);
                     appointment.setPeoLimit(10);
                     appointment.setWinners(3);
@@ -58,6 +58,17 @@ public class AppointmentRepositoryTest {
 
         }
 
+    }
+
+    @Test
+    public void update(){
+
+        List<Appointment> appointments = this.appointmentRepository.findAll();
+        for(Appointment appointment : appointments){
+            appointment.setCreateTime(DateUtil.getTimeStamp());
+            appointment.setUpdateTime(DateUtil.getTimeStamp());
+        }
+        this.appointmentRepository.saveAll(appointments);
     }
 
 }

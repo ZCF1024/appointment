@@ -14,5 +14,6 @@ public interface AppointmentViewRepository extends JpaRepository<AppointmentView
 
     List<AppointmentView> findAllByAppState(Integer state);
 
-    List<AppointmentView> findByUserId(String userId);
+    List<AppointmentView> findBySponsorId(String sponsorId);
+
 }

@@ -14,9 +14,20 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    private List<User> findAll(){
-        return this.userRepository.findByClazz("软件162");
+    @Override
+    public List<User> findAllByClazz(String clazz){
+        return this.userRepository.findByClazz(clazz);
     }
 
+    @Override
+    public Integer add(User user) {
+        return userRepository.save(user) == null ? 0 : 1;
+    }
+
+    @Override
+    public Integer add(List<User> users) {
+        List<User> result = userRepository.saveAll(users);
+        return result == null ? 0 : result.size();
+    }
 
 }

@@ -6,21 +6,20 @@ import com.zut.trpplus.utils.Result;
 import com.zut.trpplus.utils.ResultEnum;
 import com.zut.trpplus.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-@Controller
+@RestController
 @RequestMapping("app")
 public class AppointmentController {
 
     @Autowired
     private AppointmentService appointmentService;
 
+    /**
+     * 发起预约
+     * @param appointment 预约的详情（Json）
+     * @return
+     */
     @GetMapping("create")
     public Result create(@RequestBody Appointment appointment){
         if(this.appointmentService.create(appointment) == 1){
@@ -29,10 +28,13 @@ public class AppointmentController {
         return ResultUtil.error(ResultEnum.UNKONW_ERROR.getCode(), "系统异常");
     }
 
-    @ResponseBody
-    @GetMapping("test")
-    public List<Appointment> test(){
-        return this.appointmentService.findAll();
+    /**
+     * 返回所有预约活动信息
+     * @return
+     */
+    @GetMapping("all")
+    public Result test(){
+        return ResultUtil.success(appointmentService.findAll());
     }
 
 }

@@ -15,13 +15,6 @@ public interface UserRepository extends JpaRepository<User, String> {
      */
     List<User> findByClazz(String clazz);
 
-    /**
-     * 通过userId查询用户
-     * @param userId 用户ID
-     * @return 返回一个User对象
-     */
-    User findByUserId(String userId);
-
     List<User> findByClazzLike(String clazz);
 
 

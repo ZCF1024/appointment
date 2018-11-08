@@ -1,5 +1,7 @@
 package com.zut.trpplus.dao.domain;
 
+import com.zut.trpplus.utils.DateUtil;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -25,9 +27,11 @@ public class User {
 
     private String updateTime;   // 修改时间
 
-    private String deleted;      // 删除标志
+    private Boolean deleted;      // 删除标志
 
     public User() {
+        this.createTime = DateUtil.getTimeStamp();
+        this.deleted = false;
     }
 
     public String getUserId() {
@@ -102,11 +106,11 @@ public class User {
         this.updateTime = updateTime;
     }
 
-    public String getDeleted() {
+    public Boolean getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(String deleted) {
+    public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
 

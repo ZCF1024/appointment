@@ -1,5 +1,7 @@
 package com.zut.trpplus.dao.domain;
 
+import com.zut.trpplus.utils.DateUtil;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,7 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long appId;            // 活动ID
 
-    private String userId;        // 发起人ID
+    private String sponsorId;        // 发起人ID
 
     /** 活动状态
      * 1-报名中， 2-待开始, 3-进行中, 4-已结束, 5-已停止
@@ -41,6 +43,11 @@ public class Appointment {
 
     private Boolean shareable;     // 是否可分享
 
+    public Appointment() {
+        this.createTime = DateUtil.getTimeStamp();
+        this.shareable = true;
+    }
+
     public Long getAppId() {
         return appId;
     }
@@ -49,12 +56,12 @@ public class Appointment {
         this.appId = appId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getSponsorId() {
+        return sponsorId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setSponsorId(String sponsorId) {
+        this.sponsorId = sponsorId;
     }
 
     public Integer getAppState() {
@@ -157,7 +164,7 @@ public class Appointment {
     public String toString() {
         return "Appointment{" +
                 "appId=" + appId +
-                ", user_id='" + userId + '\'' +
+                ", user_id='" + sponsorId + '\'' +
                 ", appState=" + appState +
                 ", peoLimit=" + peoLimit +
                 ", topic='" + topic + '\'' +
@@ -171,6 +178,4 @@ public class Appointment {
                 '}';
     }
 
-    public Appointment() {
-    }
 }

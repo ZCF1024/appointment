@@ -20,11 +20,18 @@ public class AppointmentServiceImpl implements AppointmentService {
     private AppointmentRepository appointmentRepository;
 
     @Override
+    public Appointment getOne(Long appId) {
+        return appointmentRepository.getOne(appId);
+    }
+
+    @Override
     public int create(Appointment appointment) {
-        if(appointment.equals(appointmentRepository.save(appointment))){
-            return 1;
-        }
-        return 0;
+        return appointmentRepository.save(appointment) == null ? 0 : 1;
+    }
+
+    @Override
+    public List<Appointment> findAllByAppState(Integer appState) {
+        return this.appointmentRepository.findAllByAppState(appState);
     }
 
     @Override

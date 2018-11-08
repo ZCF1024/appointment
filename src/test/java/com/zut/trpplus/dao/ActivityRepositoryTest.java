@@ -34,7 +34,7 @@ public class ActivityRepositoryTest {
             for(int j = 0; j < 4; j++){
                 if(!user.getName().equals(names[j])){
                     Activity activity = new Activity();
-                    activity.setAppId(i % 4 + 1);
+                    activity.setAppId((long) (i % 4 + 1));
                     activity.setUserId(user.getUserId());
                     Date date = new Date();
                     activity.setCreateTime(DateUtil.getFormatDate(date));
@@ -45,6 +45,17 @@ public class ActivityRepositoryTest {
             }
         }
 
+    }
+
+    @Test
+    public void update(){
+
+        List<Activity> activities = this.activityRepository.findAll();
+        for(Activity activity : activities){
+            activity.setCreateTime(DateUtil.getTimeStamp());
+            activity.setUpdateTime(DateUtil.getTimeStamp());
+        }
+        this.activityRepository.saveAll(activities);
     }
 
 }
